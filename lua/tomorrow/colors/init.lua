@@ -1,17 +1,17 @@
-local Util = require("tokyonight.util")
+local Util = require("tomorrow.util")
 
 local M = {}
 
----@type table<string, Palette|fun(opts:tokyonight.Config):Palette>
+---@type table<string, Palette|fun(opts:tomorrow.Config):Palette>
 M.styles = setmetatable({}, {
     __index = function(_, style)
-        return vim.deepcopy(Util.mod("tokyonight.colors." .. style))
+        return vim.deepcopy(Util.mod("tomorrow.colors." .. style))
     end,
 })
 
----@param opts? tokyonight.Config
+---@param opts? tomorrow.Config
 function M.setup(opts)
-    opts = require("tokyonight.config").extend(opts)
+    opts = require("tomorrow.config").extend(opts)
     
     -- Util.day_brightness = opts.day_brightness
     
