@@ -57,7 +57,7 @@ function M.invert(color)
             color[key] = M.invert(value)
         end
     elseif type(color) == "string" then
-        local hsluv = require("tokyonight.hsluv")
+        local hsluv = require("tomorrow.hsluv")
         if color ~= "NONE" then
             local hsl = hsluv.hex_to_hsluv(color)
             hsl[3] = 100 - hsl[3]
@@ -76,7 +76,7 @@ end
 function M.brighten(color, lightness_amount, saturation_amount)
     lightness_amount = lightness_amount or 0.05
     saturation_amount = saturation_amount or 0.2
-    local hsluv = require("tokyonight.hsluv")
+    local hsluv = require("tomorrow.hsluv")
     
     -- Convert the hex color to HSLuv
     local hsl = hsluv.hex_to_hsluv(color)
@@ -91,7 +91,7 @@ function M.brighten(color, lightness_amount, saturation_amount)
     return hsluv.hsluv_to_hex(hsl)
 end
 
----@param groups tokyonight.Highlights
+---@param groups tomorrow.Highlights
 ---@return table<string, vim.api.keyset.highlight>
 function M.resolve(groups)
     for _, hl in pairs(groups) do
@@ -140,12 +140,12 @@ end
 M.cache = {}
 
 function M.cache.file(key)
-    return vim.fn.stdpath("cache") .. "/tokyonight-" .. key .. ".json"
+    return vim.fn.stdpath("cache") .. "/tomorrow-" .. key .. ".json"
 end
 
 ---@param key string
 function M.cache.read(key)
-    ---@type boolean, tokyonight.Cache
+    ---@type boolean, tomorrow.Cache
     local ok, ret = pcall(function()
         return vim.json.decode(M.read(M.cache.file(key)), { luanil = {
             object = true,
@@ -156,13 +156,13 @@ function M.cache.read(key)
 end
 
 ---@param key string
----@param data tokyonight.Cache
+---@param data tomorrow.Cache
 function M.cache.write(key, data)
     pcall(M.write, M.cache.file(key), vim.json.encode(data))
 end
 
 function M.cache.clear()
-    for _, style in ipairs({ "storm", "day", "night", "moon" }) do
+    for _, style in ipairs({ "base", "night", "nighteighties", "bright", "blue" }) do
         uv.fs_unlink(M.cache.file(style))
     end
 end

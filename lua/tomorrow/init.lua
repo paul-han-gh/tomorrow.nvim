@@ -1,5 +1,3 @@
-print "Loading tomorrow.nvim"
-
 local config = require("tomorrow.config")
 
 local M = {}
