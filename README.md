@@ -11,6 +11,19 @@ A [Lua](https://www.lua.org/) port of the [Tomorrow Theme](https://github.com/ch
     opts = {},
 }
 ```
+If you prefer to setup in your plugin file (e.g. `lua/plugins/tomorrow.lua`):
+```lua
+return {
+    "paul-han-gh/tomorrow.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+    config = function(_, opts)
+        require("tomorrow").setup(opts)
+        vim.cmd[[colorscheme tomorrow-night]]
+    end,
+}
+```
 
 ## Usage
 ```lua
@@ -21,7 +34,7 @@ vim.cmd[[colorscheme tomorrow-night]]
 Right now only the Tomorrow Night theme is implemented for Vim highlight groups.
 
 ### Roadmap
-- [x] Vim highlighting for Tomrrow Night
+- [x] Vim highlighting for Tomorrow Night
 - [ ] Treesitter support
 - [ ] Tomorrow theme + light/dark mode support
 - [ ] Other theme variants
