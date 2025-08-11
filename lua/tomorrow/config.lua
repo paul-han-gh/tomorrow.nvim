@@ -17,7 +17,7 @@ M.defaults = {
         functions     = {},
         keywords      = {},
         variables     = {},
-        -- Additional syntax groups given mainly to set "none" to match the original theme
+        -- Additional syntax groups given mainly to set "none" according the original theme
         color_column  = {},
         cursor_column = {},
         cursor_line   = {},
