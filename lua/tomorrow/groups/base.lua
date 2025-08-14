@@ -205,6 +205,16 @@ function M.get(c, opts)
         diffAdded = { fg = c.green, },
         diffRemoved = { fg = c.red, },
         gitcommitSummary = { },
+        -- Not part of the original theme's Vim color file
+        Boolean = { fg = c.orange },
+        Character = { fg = c.orange },
+        Debug = { fg = c.orange },
+        Exception = { fg = c.purple },
+        Macro = { fg = c.blue },
+        Underlined = { underline = true },
+        Number = { fg = c.orange },
+        Label = { fg = c.purple },
+        Delimiter = { fg = c.orange },
     }
 end
 
